@@ -1,0 +1,31 @@
+{% include "header.html" %}
+{% load static %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'img/about.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Me</h1>
+            <span class="subheading">This is what I do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Welcome to my personal blog! As a computer science student specializing in backend development using Flask and Django, I am excited to share my insights, experiences, and knowledge with you.</p>
+        <p>With a deep understanding of Flask and Django, I have honed my skills in developing efficient and secure backend systems. From handling complex data models to designing RESTful APIs, I have gained hands-on experience in building the backbone of modern web applications.</p>
+        <p>Through this blog, I aim to provide you with a wealth of articles, tutorials, and tips related to backend development using Flask and Django. From practical code examples to in-depth discussions on various topics, I strive to offer valuable resources that can enhance your understanding and proficiency in these frameworks.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include "footer.html" %}
