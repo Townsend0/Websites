@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Select Movie</h1>
+  <p>
+    {% for a in movies %}
+    <br><a href="{% url 'select' movie_id=a.id %}">{{ a.movie }}</a>
+    {% endfor %}
+  </p>
+
+</div>
+{% endblock %}
