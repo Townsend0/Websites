@@ -1,0 +1,176 @@
+{% load static %}
+{% include 'head.html' %}
+<body data-spy="scroll" data-target="#navbar" class="static-layout">
+	<div id="side-nav" class="sidenav">
+	<a href="javascript:void(0)" id="side-nav-close">&times;</a>
+	
+	<div class="sidenav-content">
+		<p>
+			Kuncen WB1, Wirobrajan 10010, DIY
+		</p>
+		<p>
+			<span class="fs-16 primary-color">(+68) 120034509</span>
+		</p>
+		<p>info@yourdomain.com</p>
+	</div>
+</div>	<div id="side-search" class="sidenav">
+	<a href="javascript:void(0)" id="side-search-close">&times;</a>
+	<div class="sidenav-content">
+		<form action="">
+
+			<div class="input-group md-form form-sm form-2 pl-0">
+			  <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+			  <div class="input-group-append">
+			    <button class="input-group-text red lighten-3" id="basic-text1">
+			    	<span class="lnr lnr-magnifier"></span>
+			    </button>
+			  </div>
+			</div>
+
+		</form>
+	</div>
+	
+</div>	
+
+{% include 'navbar.html' %}
+
+<div id="side-nav" class="sidenav">
+	<a href="javascript:void(0)" id="side-nav-close">&times;</a>
+	
+	<div class="sidenav-content">
+		<p>
+			Kuncen WB1, Wirobrajan 10010, DIY
+		</p>
+		<p>
+			<span class="fs-16 primary-color">(+68) 120034509</span>
+		</p>
+		<p>info@yourdomain.com</p>
+	</div>
+</div><div id="side-search" class="sidenav">
+	<a href="javascript:void(0)" id="side-search-close">&times;</a>
+	<div class="sidenav-content">
+		<form action="">
+
+			<div class="input-group md-form form-sm form-2 pl-0">
+			  <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+			  <div class="input-group-append">
+			    <button class="input-group-text red lighten-3" id="basic-text1">
+			    	<span class="lnr lnr-magnifier"></span>
+			    </button>
+			  </div>
+			</div>
+
+		</form>
+	</div>
+	
+</div>	<div class="jumbotron jumbotron-single d-flex align-items-center" style="background-image: url({% static 'img/bg.jpg' %})">
+  <div class="container text-center">
+    <h1 class="display-2 mb-4">Blog</h1>
+  </div>
+</div>	<!-- Blog Section -->
+<section id="blog" class="bg-grey">
+    <div class="container">
+        <div class="section-content">
+            <div class="title-wrap mb-5" data-aos="fade-up">
+                <h2 class="section-title">Latest <b>news</b></h2>
+                <p class="section-sub-title">Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+            </div>
+            <div class="row">
+                <!-- Blog -->
+                <div class="col-md-12 blog-holder">
+                    <div class="row">
+                        <!-- Blog Item -->
+                        {% for card in cards %}
+                        <div class="col-md-4 blog-item-wrapper" data-aos="fade-up">
+                            <div class="blog-item">
+                                <div class="blog-img">
+                                    <a href="{% url 'single' page_id=card.page_id %}"><img src="{% static 'img/' %}{{ card.img }}" alt=""></a>
+                                </div>
+                                <div class="blog-text">
+                                    <div class="blog-tag">
+                                        <a href="#"><h6><small>{{ card.tag.get }}</small></h6></a>
+                                    </div>
+                                    <div class="blog-title">
+                                        <a href="{% url 'single' page_id=card.page_id %}"><h4>{{ card.page.title }}</h4></a>
+                                    </div>
+                                    <div class="blog-meta">
+                                        <p class="blog-date">{{ card.date }}</p>
+                                    </div>
+                                    <div class="blog-desc">
+                                        <p>{{ card.content }}</p>
+                                    </div>
+                                    <div class="blog-author">
+                                        <p>{{ card.by }}</p>
+                                    </div>
+                                    <div class="blog-share-wrapper">
+                                        {% if card.facebook %}
+                                        <a class="blog-share" href="{{ card.facebook }}">
+                                            <i class="fab fa-facebook-square"></i>
+                                        </a>
+                                        {% endif %}
+                                        {% if card.twitter %}
+                                        <a class="blog-share" href="{{ card.twitter }}">
+                                            <i class="fab fa-twitter-square"></i>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- End of Blog -->
+                <nav aria-label="...">
+                    <ul class="pagination">
+
+                    {% if cards.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ cards.previous_page_number }}">Previous</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    {% endif %}
+
+                    {% for number in cards.paginator.page_range %}
+                        {% if number == cards.number %}
+                        <li class="page-item active"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if cards.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ cards.next_page_number }}">Next</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                    </li>
+                    {% endif %}
+
+                    </ul>
+                  </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Blog Section -->	<!-- Features Section-->
+<section id="cta" class="bg-fixed overlay" style="background-image: url({% static 'img/bg.jpg' %});">
+    <div class="container">
+        <div class="section-content" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="mb-2">Make a beautiful website, or million of them</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, veritatis qui eligendi delectus quia fuga!</p>
+                    <a class="btn btn-outline-primary btn-lg">FEATURES</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of Features Section--></div>
+{% include 'footer.html' %}
