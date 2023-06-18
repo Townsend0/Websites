@@ -1,0 +1,56 @@
+
+{% block content %}
+{% include "header.html" %}
+{% load static %}
+  <!-- Page Header -->
+  <link rel="stylesheet" href="{% static 'ckeditor/ckeditor/contents.css' %}">
+    
+  <header class="masthead" style="background-image: url('{% static 'img/edit-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>{{ purpose }} Post</h1>
+            <span class="subheading">You're going to make a great blog post!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.title.label_tag }}
+          <div class="input-group mb-3">
+            {{ form.title }}
+          </div>
+          {{ form.subtitle.label_tag }}
+          <div class="input-group mb-3">
+            {{ form.subtitle }}
+          </div>
+          {{ form.author.label_tag }}
+          <div class="input-group mb-3">
+            {{ form.author }}
+          </div>
+          {{ form.img_url.label_tag }}
+          <div class="input-group mb-3">
+            {{ form.img_url }}
+          </div>
+          {{ form.content.label_tag }}
+          <div class="input-group">
+            {{ form.content }}
+            {{ form.media }}
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Save Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

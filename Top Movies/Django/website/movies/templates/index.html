@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block title %}My Top 10 Movies{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1 class="heading">My Top 10 Movies</h1>
+  <p class="description">These are my all time favourite movies.</p>
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+   {% for form in forms %}
+  <div class="card" style="border-width: 0; background-color: transparent" >
+    <div class="front" style="background-image: url({{form.img_url}});">
+        <p class="large">{{ form.ranking }}</p>
+    </div>
+    <div class="back">
+      <div>
+    <div class="title">{{ form.name }} <span class="release_date">({{ form.year }})</span></div>
+        <div class="rating">
+            <label>{{ form.rating }}</label>
+          <i class="fas fa-star star"></i>
+        </div>
+          <p class="review">{{ form.review }}</p>
+        <p class="overview">{{ form.description }}</p>
+        <a href="{% url 'update' id=form.id %}" class="button">Update</a>
+        <a href="{% url 'delete' id=form.id %}" class="button delete-button">Delete</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<div class="container text-center add">
+<a href="{% url 'add' %}" class="button">Add Movie</a>
+</div>
+
+{% endblock %}

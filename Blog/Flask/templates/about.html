@@ -1,0 +1,30 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({{ url_for('static', filename='img/about-bg.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Me</h1>
+            <span class="subheading">This is what I do.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>My name is obada, i study computer science in turkey, i specialize in backend development using Flask and im on my way to learning Django and this is my first completed website, if you are interested you can check some of my work at my github page down below</p>
+        <p>The content of this blog is gonna be as follows i made a bot that would scrape the hottest 3 technical news from a well known technical news website that i can not say its name for the day and then publish it at midnight</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  {% include "footer.html" %}

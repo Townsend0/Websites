@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="heading">Add a Movie</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.search.label_tag }} {{ form.search }}
+      <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}
